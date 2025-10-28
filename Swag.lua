@@ -25,12 +25,12 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
-	Warning.Name = "Warning"
+	Warning.Name = "SwagBigN"
 	Warning.Parent = Notification
 	Warning.BackgroundTransparency = 1.000
 	Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
 	Warning.Size = UDim2.new(0, 44, 0, 49)
-	Warning.Image = "rbxassetid://3944668821"
+	Warning.Image = "rbxassetid://129388176686366"
 	Warning.ImageColor3 = Color3.fromRGB(241, 196, 15)
 	Warning.ScaleType = Enum.ScaleType.Fit
 

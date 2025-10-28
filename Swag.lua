@@ -25,14 +25,21 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
-	Warning.Name = "Warning"
-	Warning.Parent = Notification
-	Warning.BackgroundTransparency = 0
-	Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
-	Warning.Size = UDim2.new(0, 44, 0, 49)
-	Warning.Image = "rbxassetid://93453832881348"
-	Warning.ImageColor3 = Color3.fromRGB(255, 255, 255)
-	Warning.ScaleType = Enum.ScaleType.Fit
+Warning.Name = "Warning"
+Warning.Parent = Notification
+Warning.BackgroundTransparency = 0
+Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
+Warning.Size = UDim2.new(0, 44, 0, 49)
+Warning.ImageColor3 = Color3.fromRGB(255, 255, 255)
+Warning.ScaleType = Enum.ScaleType.Fit
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local thumbUrl, isReady = Players:GetUserThumbnailAsync(
+    player.UserId,
+    Enum.ThumbnailType.HeadShot,
+    Enum.ThumbnailSize.Size100x100
+)
+Warning.Image = thumbUrl
 
 	UICorner.CornerRadius = UDim.new(0, 20)
 	UICorner.Parent = Warning

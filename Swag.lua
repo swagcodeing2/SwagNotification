@@ -3,12 +3,31 @@ local NotificationLibrary = {}
 local AbyssGUI = Instance.new("ScreenGui"); AbyssGUI.Name = "Abyss"; AbyssGUI.Parent = game.CoreGui; AbyssGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function NotificationLibrary:Notify(TitleText, Desc, Delay)
-    local Notification = Instance.new("Frame")
+	local Notification = Instance.new("Frame")
 	local Line = Instance.new("Frame")
 	local Warning = Instance.new("ImageLabel")
-	local UICorner = Instance.new("UICorner")
 	local Title = Instance.new("TextLabel")
 	local Description = Instance.new("TextLabel")
+	do
+		local NotificationCorner = Instance.new("UICorner")
+		NotificationCorner.CornerRadius = UDim.new(0, 10)
+		NotificationCorner.Parent = Notification
+	end
+	do
+		local LineCorner = Instance.new("UICorner")
+		LineCorner.CornerRadius = UDim.new(0, 2)
+		LineCorner.Parent = Line
+	end
+	do
+		local TitleCorner = Instance.new("UICorner")
+		TitleCorner.CornerRadius = UDim.new(0, 6)
+		TitleCorner.Parent = Title
+	end
+	do
+		local DescriptionCorner = Instance.new("UICorner")
+		DescriptionCorner.CornerRadius = UDim.new(0, 6)
+		DescriptionCorner.Parent = Description
+	end
 
 	Notification.Name = "Notification"
 	Notification.Parent = AbyssGUI
@@ -25,7 +44,6 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
-local Warning = Warning or Instance.new("ImageLabel")
 Warning.Name = "Warning"
 Warning.Parent = Notification
 Warning.BackgroundTransparency = 1
@@ -36,9 +54,11 @@ Warning.ScaleType = Enum.ScaleType.Fit
 Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
 Warning.Size = UDim2.new(0, 44, 0, 49)
 
-local UICorner = Warning:FindFirstChildOfClass("UICorner") or Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 20)
-UICorner.Parent = Warning
+do
+	local UICorner = Warning:FindFirstChildOfClass("UICorner") or Instance.new("UICorner")
+	UICorner.CornerRadius = UDim.new(0, 20)
+	UICorner.Parent = Warning
+end
 
 local Players = game:GetService("Players")
 local ContentProvider = game:GetService("ContentProvider")

@@ -25,14 +25,46 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
-local P = game:GetService("Players")
-local W = Warning or Instance.new("ImageLabel", Notification)
-W.Name="Warning"; W.BackgroundTransparency=1; W.BorderSizePixel=0; W.ImageTransparency=0
-W.ImageColor3=Color3.new(1,1,1); W.ScaleType=Enum.ScaleType.Fit
-W.Position=UDim2.new(0.0258302614,0,0.0897435844,0); W.Size=UDim2.new(0,44,0,49)
-( W:FindFirstChildOfClass("UICorner") or Instance.new("UICorner", W) ).CornerRadius=UDim.new(0,20)
-W.Image = ("rbxthumb://type=AvatarHeadShot&id=%d&w=100&h=100"):format(P.LocalPlayer.UserId)
-pcall(function() game:GetService("ContentProvider"):PreloadAsync({W}) end)
+local Warning = Warning or Instance.new("ImageLabel")
+Warning.Name = "Warning"
+Warning.Parent = Notification
+Warning.BackgroundTransparency = 1
+Warning.BorderSizePixel = 0
+Warning.ImageTransparency = 0
+Warning.ImageColor3 = Color3.fromRGB(255, 255, 255)
+Warning.ScaleType = Enum.ScaleType.Fit
+Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
+Warning.Size = UDim2.new(0, 44, 0, 49)
+
+local UICorner = Warning:FindFirstChildOfClass("UICorner") or Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 20)
+UICorner.Parent = Warning
+
+local Players = game:GetService("Players")
+local ContentProvider = game:GetService("ContentProvider")
+
+local player = Players.LocalPlayer
+if not player then
+    Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
+    player = Players.LocalPlayer
+end
+local thumbUrl
+local ok, err = pcall(function()
+    local url, isReady = Players:GetUserThumbnailAsync(
+        player.UserId,
+        Enum.ThumbnailType.HeadShot,
+        Enum.ThumbnailSize.Size100x100
+    )
+    thumbUrl = url
+end)
+if ok and thumbUrl then
+    Warning.Image = thumbUrl
+    local preloadOk, preloadErr = pcall(function()
+        ContentProvider:PreloadAsync({ Warning })
+    end)
+else
+    Warning.Image = ("rbxthumb://type=AvatarHeadShot&id=%d&w=100&h=100"):format(player.UserId)
+end
 
 	Title.Name = "Title"
 	Title.Parent = Notification

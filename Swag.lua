@@ -25,7 +25,7 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
-	Warning.Name = "SwagBigN"
+	Warning.Name = "Warning"
 	Warning.Parent = Notification
 	Warning.BackgroundTransparency = 1.000
 	Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)

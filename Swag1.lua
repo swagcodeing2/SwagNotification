@@ -12,26 +12,26 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 
 	Notification.Name = "Notification"
 	Notification.Parent = AbyssGUI
-	Notification.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-	Notification.BackgroundTransparency = 0.400
+	Notification.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Notification.BackgroundTransparency = 0
 	Notification.BorderSizePixel = 0
 	Notification.Position = UDim2.new(1, 5, 0, 75)
 	Notification.Size = UDim2.new(0, 450, 0, 60)
 
 	Line.Name = "Line"
 	Line.Parent = Notification
-	Line.BackgroundColor3 = Color3.fromRGB(241, 196, 15)
+	Line.BackgroundColor3 = Color3.fromRGB(0,0,255)
 	Line.BorderSizePixel = 0
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
 	Warning.Name = "Warning"
 	Warning.Parent = Notification
-	Warning.BackgroundTransparency = 1.000
+	Warning.BackgroundTransparency = 0
 	Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
 	Warning.Size = UDim2.new(0, 44, 0, 49)
 	Warning.Image = "rbxassetid://93453832881348"
-	Warning.ImageColor3 = Color3.fromRGB(241, 196, 15)
+	Warning.ImageColor3 = Color3.fromRGB(255, 255, 255)
 	Warning.ScaleType = Enum.ScaleType.Fit
 
 	UICorner.CornerRadius = UDim.new(0, 20)

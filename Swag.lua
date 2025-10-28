@@ -25,24 +25,14 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
 
-Warning.Name = "Warning"
-Warning.Parent = Notification
-Warning.BackgroundTransparency = 1.000
-Warning.Position = UDim2.new(0.0258302614, 0, 0.0897435844, 0)
-Warning.Size = UDim2.new(0, 44, 0, 49)
-Warning.ImageColor3 = Color3.fromRGB(255,255,255)
-Warning.ScaleType = Enum.ScaleType.Fit
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local thumbUrl, isReady = Players:GetUserThumbnailAsync(
-    player.UserId,
-    Enum.ThumbnailType.HeadShot,
-    Enum.ThumbnailSize.Size100x100
-)
-Warning.Image = thumbUrl
-
-	UICorner.CornerRadius = UDim.new(0, 20)
-	UICorner.Parent = Warning
+local P = game:GetService("Players")
+local W = Warning or Instance.new("ImageLabel", Notification)
+W.Name="Warning"; W.BackgroundTransparency=1; W.BorderSizePixel=0; W.ImageTransparency=0
+W.ImageColor3=Color3.new(1,1,1); W.ScaleType=Enum.ScaleType.Fit
+W.Position=UDim2.new(0.0258302614,0,0.0897435844,0); W.Size=UDim2.new(0,44,0,49)
+( W:FindFirstChildOfClass("UICorner") or Instance.new("UICorner", W) ).CornerRadius=UDim.new(0,20)
+W.Image = ("rbxthumb://type=AvatarHeadShot&id=%d&w=100&h=100"):format(P.LocalPlayer.UserId)
+pcall(function() game:GetService("ContentProvider"):PreloadAsync({W}) end)
 
 	Title.Name = "Title"
 	Title.Parent = Notification
